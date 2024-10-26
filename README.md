@@ -1,3 +1,4 @@
+![alt text](https://raw.githubusercontent.com/bozorgiyan/shaparak-captcha-solver-extension/refs/heads/main/logo/logo-48.png)
 # Shaparak Captcha Solver Extension
 
 ## Install
