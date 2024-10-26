@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Shaparak Caotcha Solver",
+    "description": "Shaparak payment gateways captcha solver",
+    "version": "0.1.0",
+    "icons": {
+        "16": "logo/logo-16.png",
+        "48": "logo/logo-48.png",
+        "128": "logo/logo-128.png"
+    },
+    "permissions": [],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "content_scripts": [{
+        "js": ["thirdparty/tesseract.min.js", "foreground.js"],
+        "matches": [
+            "https://*.Shaparak.ir/*",
+            "https://*.Shaparak.ir:8080/*"
+        ]
+    }]
+}
