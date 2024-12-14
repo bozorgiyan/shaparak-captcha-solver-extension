@@ -13,8 +13,8 @@ switch (subdomain) {
     case 'asan':
         asanHandler();
         break;
-    case 'ikc':
-        ikcHandler();
+    // case 'ikc':
+    //     ikcHandler();
         break;
     case 'bpm':
         bpmHandler();
@@ -134,10 +134,8 @@ function ikcHandler() {
 
     if (window.document.querySelector('.captcha-pass-height img')) {
         window.alert('IKC2')
-        window.document.querySelector('.captcha-pass-height').addEventListener('change', (event) => {
-            window.alert('Chhhhhhh')
-        });
-        observeImageChange('.captcha-pass-height img', async (image) => {
+        
+        observeImageAdd('.captcha-pass-height img', async (image) => {
             window.alert('CH')
             window.document.querySelectorAll('input')[4].value = 'Loading...'
             const captcha = window.document.querySelector('.captcha-pass-height  img').src;
@@ -303,6 +301,31 @@ function observeImageChange(selector, onChangeCallback) {
     // Return a function to stop observing if needed
     return () => observer.disconnect();
 }
+function observeImageAdd(selector, onChangeCallback) {
+    // Create a MutationObserver to watch the entire DOM for changes
+    const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            // Check if any nodes were added
+            mutation.addedNodes.forEach((node) => {
+                // If an element matching the selector is added, trigger the callback
+                if (node instanceof Element && node.matches(selector)) {
+                    onChangeCallback(node);
+                }
+            });
+        }
+    });
+
+    // Start observing the document's body for added/removed child elements
+    observer.observe(document.body, {
+        childList: true,  // Watch for direct children changes
+        subtree: true,    // Watch across all levels of the DOM
+    });
+
+    // Return a function to stop observing if needed
+    return () => observer.disconnect();
+}
+
+// Usage example
 function filterNumbers(inputString) {
     let result = '';
     for (let i = 0; i < inputString.length; i++) {
