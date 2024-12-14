@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Shaparak Caotcha Solver",
     "description": "Shaparak payment gateways captcha solver",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "icons": {
         "16": "logo/logo-16.png",
         "48": "logo/logo-48.png",
